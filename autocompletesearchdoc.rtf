@@ -1,0 +1,22 @@
+Add SearchBox for autocompleting search terms
+
+The SearchBox allows users to perform a text-based geographic search, such as 'pizza in New York' or 'shoe stores near robson street'. You can attach the SearchBox to a text field and, as text is entered, the service will return predictions in the form of a drop-down pick list.
+
+SearchBox supplies an extended list of predictions, which can include places (as defined by the Google Places API) plus suggested search terms. For example, if the user enters 'pizza in new', the pick list may include the phrase 'pizza in New York, NY' as well as the names of various pizza outlets. When a user selects a place from the list, information about that place is returned to the SearchBox object, and can be retrieved by your application.
+
+Note: When you display predictions from the Google Places search box, you must include the 'powered by Google' logo. This logo is included in the results list by default, for your convenience.
+The SearchBox constructor takes two arguments:
+
+An HTML input element of type text. This is the input field that the SearchBox service will monitor and attach its results to.
+An options argument, which can contain the bounds property: bounds is a google.maps.LatLngBounds object specifying the area in which to search for places. The results are biased towards, but not restricted to, places contained within these bounds.
+The following code uses the bounds parameter to bias the results towards places within a particular geographic area, specified via laitude/longitude coordinates.
+
+var defaultBounds = new google.maps.LatLngBounds(
+  new google.maps.LatLng(-33.8902, 151.1759),
+  new google.maps.LatLng(-33.8474, 151.2631));
+
+var input = document.getElementById('searchTextField');
+
+var searchBox = new google.maps.places.SearchBox(input, {
+  bounds: defaultBounds
+});
