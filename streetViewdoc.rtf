@@ -1,0 +1,15 @@
+Street View Service
+
+Overview
+
+Google Street View provides panoramic 360 degree views from designated roads throughout its coverage area. Street View's API coverage is the same as that for the Google Maps application (https://maps.google.com/). The list of currently supported cities for Street View is available at the Google Maps website.
+
+The Google Maps JavaScript API provides a Street View service for obtaining and manipulating the imagery used in Google Maps Street View. This Street View service is supported natively within the browser.
+
+Street View Map Usage
+
+Although Street View can be used within a standalone DOM element, it is most useful when indicating a location on a map. By default, Street View is enabled on a map, and a Street View Pegman control appears integrated within the navigation (zoom and pan) controls. You may hide this control within the map's MapOptions by setting streetViewControl to false. You may also change the default position of the Street View control by setting the Map's streetViewControlOptions.position property to a new ControlPosition.
+
+The Street View Pegman control allows you to view Street View panoramas directly within the map. When the user clicks and holds the Pegman, the map updates to show blue outlines around Street View-enabled streets, offering a user experience similar to the Google Maps app.
+
+When the user drops the Pegman marker onto a street, the map updates to display a Street View panorama of the indicated location.
