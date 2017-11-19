@@ -25,3 +25,59 @@ var searchBox = new google.maps.places.SearchBox(input, {
 Change the search area for SearchBox
 
 To change the search area for an existing SearchBox, call setBounds() on the SearchBox object and pass the relevant LatLngBounds object.
+
+------------
+
+Get SearchBox information
+
+When the user selects an item from the predictions attached to the search box, the service fires a places_changed event. You can call getPlaces() on the SearchBox object, to retrieve an array containing several predictions, each of which is a PlaceResult object.
+
+For more information about the PlaceResult object, refer to the documentation on place detail results.
+
+// Listen for the event fired when the user selects a prediction and retrieve
+// more details for that place.
+searchBox.addListener('places_changed', function() {
+  var places = searchBox.getPlaces();
+
+  if (places.length == 0) {
+    return;
+  }
+
+  // Clear out the old markers.
+  markers.forEach(function(marker) {
+    marker.setMap(null);
+  });
+  markers = [];
+
+  // For each place, get the icon, name and location.
+  var bounds = new google.maps.LatLngBounds();
+  places.forEach(function(place) {
+    if (!place.geometry) {
+      console.log("Returned place contains no geometry");
+      return;
+    }
+    var icon = {
+      url: place.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(25, 25)
+    };
+
+    // Create a marker for each place.
+    markers.push(new google.maps.Marker({
+      map: map,
+      icon: icon,
+      title: place.name,
+      position: place.geometry.location
+    }));
+
+    if (place.geometry.viewport) {
+      // Only geocodes have viewport.
+      bounds.union(place.geometry.viewport);
+    } else {
+      bounds.extend(place.geometry.location);
+    }
+  });
+  map.fitBounds(bounds);
+});
