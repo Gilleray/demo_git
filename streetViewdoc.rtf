@@ -13,3 +13,12 @@ Although Street View can be used within a standalone DOM element, it is most use
 The Street View Pegman control allows you to view Street View panoramas directly within the map. When the user clicks and holds the Pegman, the map updates to show blue outlines around Street View-enabled streets, offering a user experience similar to the Google Maps app.
 
 When the user drops the Pegman marker onto a street, the map updates to display a Street View panorama of the indicated location.
+
+
+-----------
+
+Street View Panoramas
+
+Street View images are supported through use of the StreetViewPanorama object, which provides an API interface to a Street View "viewer." Each map contains a default Street View panorama, which you can retrieve by calling the map's getStreetView() method. When you add a Street View control to the map by setting its streetViewControl option to true, you automatically connect the Pegman control to this default Street View panorama.
+
+You may also create your own StreetViewPanorama object and set the map to use that instead of the default, by setting the map's streetView property explicitly to that constructed object. You may wish to override the default panorama if you want to modify default behavior, such as the automatic sharing of overlays between the map and the panorama. (See Overlays within Street View below.)
