@@ -20,3 +20,8 @@ var input = document.getElementById('searchTextField');
 var searchBox = new google.maps.places.SearchBox(input, {
   bounds: defaultBounds
 });
+
+
+Change the search area for SearchBox
+
+To change the search area for an existing SearchBox, call setBounds() on the SearchBox object and pass the relevant LatLngBounds object.
