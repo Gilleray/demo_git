@@ -42,3 +42,12 @@ function initialize() {
       });
   map.setStreetView(panorama);
 }
+
+
+----------------
+
+Overlays within Street View
+
+The default StreetViewPanorama object supports the native display of map overlays. Overlays generally appear at "street level" anchored at LatLng positions. (Markers will appear with their tails anchored to the location's horizontal plane within the Street View panorama for example.)
+
+Currently, the types of overlays which are supported on Street View panoramas are limited to Markers, InfoWindows and custom OverlayViews. Overlays which you display on a map may be displayed on a Street View panorama by treating the panorama as a substitute for the Map object, calling setMap() and passing the StreetViewPanorama as an argument instead of a map. Info windows similarly may be opened within a Street View panorama by calling open(), passing the StreetViewPanorama() instead of a map.
